@@ -456,6 +456,7 @@ Function483bb: ; 483bb (12:43bb)
 	ret
 ; 483e8 (12:43e8)
 
+;make last element as Wakayama(2e)
 Function483e8: ; 483e8
 	push de
 	ld hl, Prefectures
@@ -600,11 +601,24 @@ MenuData2_0x4851b: ; 0x4851b
 	db SCROLLINGMENU_DISPLAY_ARROWS | SCROLLINGMENU_ENABLE_RIGHT | SCROLLINGMENU_ENABLE_LEFT | SCROLLINGMENU_CALL_FUNCTION1_CANCEL ; flags
 	db 6 ; items
 
-Unknown_4851d: ; 4851d
-	db $00, $01, $12, $2b, $45, $12, $e8, $43, $00, $00, $00, $00, $00, $00, $2e, $00, $01, $02, $03, $04
-	db $05, $06, $07, $08, $09, $0a, $0b, $0c, $0d, $0e, $0f, $10, $11, $12, $13, $14, $15, $16, $17, $18
-	db $19, $1a, $1b, $1c, $1d, $1e, $1f, $20, $21, $22, $23, $24, $25, $26, $27, $28, $29, $2a, $2b, $2c
-	db $2d, $ff
+MenuData3Script_4851d: ; 4851d
+	db $00, $01
+	db $12	;BANK(MenuData4_Prefectures_list)
+	dw MenuData4_Prefectures_list
+	db $12 ;BANK(Function483e8)
+	dw Function483e8
+	db $00, $00, $00, $00, $00, $00
+	
+MenuData4_Prefectures_list: ;12:2b45
+	db $2e	;number of article
+	db $00, $01, $02, $03, $04, $05
+	db $06, $07, $08, $09, $0a, $0b
+	db $0c, $0d, $0e, $0f, $10, $11
+	db $12, $13, $14, $15, $16, $17
+	db $18, $19, $1a, $1b, $1c, $1d
+	db $1e, $1f, $20, $21, $22, $23
+	db $24, $25, $26, $27, $28, $29
+	db $2a, $2b, $2c, $2d, $ff;terminate
 
 Prefectures:
 Aichi:     db "あいちけん@"   ; Aichi
