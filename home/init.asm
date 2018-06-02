@@ -138,8 +138,24 @@ Init:: ; 17d
 
 	ld a, CONNECTION_NOT_ESTABLISHED
 	ld [hSerialConnectionStatus], a
+	
+; 한글 테이블 초기화
+	ld a, [rSVBK]
+	push af
+	ld a, 4
+	ld [rSVBK], a
+
+	xor a
+	ld hl, $d080
+	ld bc, $0080
+	call ByteFill
+
+	pop af
+	ld [rSVBK], a
 
 	farcall InitCGBPals
+
+	callba InitCGBPals
 
 	ld a, HIGH(vBGMap1)
 	ld [hBGMapAddress + 1], a

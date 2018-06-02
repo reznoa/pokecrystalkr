@@ -21,4 +21,5 @@ PlaceWaitingText:: ; 4000
 	jp DelayFrames
 
 .Waiting: ; 4025
-	db "Waiting...!@"
+	; db "통신대기중!@"
+	db $09, $BB, $06, $65, $02, $EB, $01, $B2, $08, $0F, $0B, $66, "@"

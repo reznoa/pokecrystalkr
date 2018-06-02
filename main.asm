@@ -3,13 +3,13 @@ INCLUDE "constants.asm"
 
 SECTION "bank1", ROMX
 
-INCLUDE "engine/routines/placewaitingtext.asm"
+INCLUDE "engine/routines/placewaitingtext.asm";Done
 INCLUDE "engine/routines/loadpushoam.asm"
 INCLUDE "engine/map_objects.asm"
 INCLUDE "engine/intro_menu.asm"
 INCLUDE "engine/init_map.asm"
 INCLUDE "engine/learn.asm"
-INCLUDE "engine/routines/checknickerrors.asm"
+INCLUDE "engine/routines/checknickerrors.asm";Done
 INCLUDE "engine/math.asm"
 INCLUDE "data/items/attributes.asm"
 INCLUDE "engine/npc_movement.asm"
@@ -593,11 +593,21 @@ INCBIN "gfx/pokegear/pokegear.2bpp.lz"
 
 INCLUDE "engine/european_mail.asm"
 
+SECTION "Hangul Font Part 1", ROMX
+INCBIN "gfx/font/font_hangul.1bpp.bin", 0, $2FFF
+
+SECTION "Hangul Font Part 2", ROMX
+
+INCBIN "gfx/font/font_hangul.1bpp.bin", $3000, $3FFF
+
+SECTION "Hangul Font Part 3", ROMX
+
+INCBIN "gfx/font/font_hangul.1bpp.bin", $7000, $3FFF
 
 SECTION "Battle Tower Text", ROMX
 
 INCLUDE "data/battle_tower/trainer_text.asm"
-
+INCLUDE "engine/hangul/hangul.asm"
 
 SECTION "Battle Tower Trainer Data", ROMX
 

@@ -214,6 +214,8 @@ dict2: MACRO
 ._\@:
 ENDM
 
+	cp $0c
+	jp c, PlaceHangulChar
 	dict TX_DAY,      DayOfWeekChar
 	dict "<LINE>",    LineChar
 	dict "<NEXT>",    NextLineChar
@@ -250,6 +252,12 @@ ENDM
 	dict "<USER>",    PlaceMoveUsersName
 	dict "<ENEMY>",   PlaceEnemysName
 	dict "<PLAY_G>",  PlaceGenderedPlayerName
+	cp $ea
+	jr nc, .NumberChar
+	cp $80
+	jp nc, PlaceStandardFont
+
+.NumberChar
 
 	cp "ﾟ"
 	jr z, .place ; should be .diacritic
@@ -414,23 +422,33 @@ PlaceCommandCharacter:: ; 126a
 	jp NextChar
 ; 0x1273
 
-TMCharText::      db "TM@"
-TrainerCharText:: db "TRAINER@"
-PCCharText::      db "PC@"
-RocketCharText::  db "ROCKET@"
-PlacePOKeText::   db "POKé@"
-KougekiText::     db "こうげき@"
-SixDotsCharText:: db "……@"
-EnemyText::       db "Enemy @"
-PlacePKMNText::   db "<PK><MN>@"
-PlacePOKEText::   db "<PO><KE>@"
+	; TMCharText:: db "기술머신@" ; 1273
+TMCharText:: db "", $01, $B2, $06, $2A, $04, $73, $06, $65, "@" ; 127"
+	; TrainerCharText:: db "트레이너@" ; 1276
+TrainerCharText:: db "", $09, $DE, $03, $E9, $07, $9C, $02, $6A, "@" ; 127"
+	; PCCharText:: db "컴퓨터@" ; 127e
+PCCharText:: db "", $09, $24, $0A, $4B, $09, $9D, "@" ; 127"
+	; RocketCharText:: db "로켓@" ; 1281
+RocketCharText:: db "", $03, $FE, $09, $2F, "@" ; 128"
+	; PlacePOKeText:: db "포켓@" ; 1288
+PlacePOKeText:: db "", $0A, $27, $09, $2F, "@" ; 128"
+	; KougekiText:: db "こうげき@" ; 128d
+KougekiText:: ;db "こうげき@" ; 128"
+	; SixDotsCharText:: db "……@" ; 1292
+SixDotsCharText:: db "", $0B, $6A, $0B, $6A, "@" ; 129"
+	; EnemyText:: db "적의 @" ; 1295
+EnemyText:: db "", $07, $CB, $07, $97, " @" ; 129"
+	; PlacePKMNText:: db "포켓몬@" ; PK MN ; 129c
+PlacePKMNText:: db "", $0A, $27, $09, $2F, $04, $93, "@" ; PK MN ; 129"
+	; PlacePOKEText:: db "포켓@" ; PO KE ; 129f
+PlacePOKEText:: db "", $0A, $27, $09, $2F, "@" ; PO KE ; 129"
 String_Space::    db " @"
 ; These strings have been dummied out.
 PlaceJPRouteText::
 PlaceWatashiText::
 PlaceKokoWaText:: db "@"
-KunSuffixText::   db "@"
-ChanSuffixText::  db "@"
+KunSuffixText::   db $01,$8A,"@" ; 12a5
+ChanSuffixText::  db $06,$E7,"@" ; 12a6
 ; 12a7
 
 NextLineChar:: ; 12a7
@@ -574,6 +592,29 @@ PlaceDexEnd:: ; 1356
 	pop hl
 	ret
 ; 135a
+
+
+PlaceStandardFont::
+	push bc
+	ld b, $0d
+	jr StandardFont
+
+PlaceHangulChar::
+	push bc
+	ld b, a
+	inc de
+StandardFont:
+	ld a, [de]
+	ld c, a
+	push de
+
+	homecall LoadHangulFont
+
+	pop de
+	pop bc
+	call PrintLetterDelay
+	jp NextChar
+
 
 PromptText:: ; 135a
 	ld a, [wLinkMode]
@@ -1143,12 +1184,20 @@ Text_TX_DAY:: ; 1582
 	dw .Fri
 	dw .Satur
 
-.Sun:    db "SUN@"
-.Mon:    db "MON@"
-.Tues:   db "TUES@"
-.Wednes: db "WEDNES@"
-.Thurs:  db "THURS@"
-.Fri:    db "FRI@"
-.Satur:  db "SATUR@"
-.Day:    db "DAY@"
+; .Sun:    db "일@"
+.Sun:      db $07, $9F, "@"
+; .Mon:    db "월@"
+.Mon:      db $07, $69, "@"
+; .Tues:   db "화@"
+.Tues:     db $0A, $AD, "@"
+; .Wednes: db "수@"
+.Wednes:   db $06, $26, "@"
+; .Thurs:  db "목@"
+.Thurs:    db $04, $91, "@"
+; .Fri:    db "금@"
+.Fri:      db $01, $AD, "@"
+; .Satur:  db "토@"
+.Satur:    db $09, $B4, "@"
+; .Day:    db "요일@"
+.Day:      db $07, $44, $07, $9F, "@"
 ; 15d8

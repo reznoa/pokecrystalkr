@@ -1563,6 +1563,11 @@ wMinutesSince:: db
 wHoursSince:: db
 wDaysSince:: db
 
+wHangulFontBank:: ds 1
+wHangulTile::     ds 1
+wFontSetting::    ds 1
+
+
 
 SECTION "WRAM 1", WRAMX
 
@@ -3030,6 +3035,11 @@ NEXTU ; d422
 wSurfWaveBGEffect:: ds $40
 wSurfWaveBGEffectEnd::
 ENDU ; d462
+
+SECTION "Hangul Font", WRAMX, BANK [4]
+w4_unused::        ds $80 ; d000 ~ d07f 미사용
+wHangulTable::     ds $80 ; d080 ~ d0ff 테이블 저장용
+wHangulFontTemp::  ds $40 ; d100 ~ d140 폰트 그래픽 처리용
 
 
 SECTION "Mobile RAM", WRAMX

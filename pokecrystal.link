@@ -295,6 +295,11 @@ ROMX $77
 	"bank77_2"
 ROMX $78
 	"Tileset Data 8"
+	"Hangul Font Part 1"
+ROMX $79
+	"Hangul Font Part 2"
+ROMX $7A
+	"Hangul Font Part 3"
 ROMX $7b
 	"Battle Tower Text"
 ROMX $7c
