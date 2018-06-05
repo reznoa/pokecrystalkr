@@ -1,18 +1,16 @@
-# Pokémon Crystal [![Build Status][travis-badge]][travis]
+# Open Source Pokémon Crystal Korean Translation Project
+This is Open Source Pokémon Crystal Korean Translation Project
 
-This is a disassembly of Pokémon Crystal.
-
-It builds the following roms:
-
-* Pokemon - Crystal Version (UE) (V1.0) [C][!].gbc `sha1: f4cd194bdee0d04ca4eac29e09b8e4e9d818c133`
-* Pokemon - Crystal Version (UE) (V1.1) [C][!].gbc `sha1: f2f52230b536214ef7c9924f483392993e226cfb`
+This is based on pret's disassembly of [**Pokémon Crystal**][pokecrystal].
 
 To set up the repository, see [INSTALL.md](INSTALL.md).
+## Credits
+- Troy, Mr.Brain : Main Code
 
 ## See also
 
-* [FAQ](FAQ.md)
-* [Documentation](docs/)
+* [**Pokémon Yellow Korean Fan Translation**][pokeyellowkr]
+* [**Open Source Pokémon Red/Blue Korean Translation Project**][pokeredkr]
 * Disassembly of [**Pokémon Red/Blue**][pokered]
 * Disassembly of [**Pokémon Yellow**][pokeyellow]
 * Disassembly of [**Pokémon Gold**][pokegold]
@@ -21,9 +19,9 @@ To set up the repository, see [INSTALL.md](INSTALL.md).
 * Disassembly of [**Pokémon Ruby**][pokeruby]
 * Disassembly of [**Pokémon Fire Red**][pokefirered]
 * Disassembly of [**Pokémon Emerald**][pokeemerald]
-* Discord: [**pret**][Discord]
-* irc: [freenode#pret][irc]
 
+[pokeyellowkr]: https://github.com/Wintiger0222/pokeyellowkr 
+[pokeredkr]:https://github.com/009342/pokered/tree/Pokémon-Yellow-Based-Translation
 [pokered]: https://github.com/pret/pokered
 [pokeyellow]: https://github.com/pret/pokeyellow
 [pokegold]: https://github.com/pret/pokegold
@@ -32,6 +30,7 @@ To set up the repository, see [INSTALL.md](INSTALL.md).
 [pokeruby]: https://github.com/pret/pokeruby
 [pokefirered]: https://github.com/pret/pokefirered
 [pokeemerald]: https://github.com/pret/pokeemerald
+[pokecrystal]: https://github.com/pret/pokecrystal
 [Discord]: https://discord.gg/cJxDDVP
 [irc]: https://kiwiirc.com/client/irc.freenode.net/?#pret
 [travis]: https://travis-ci.org/pret/pokecrystal
