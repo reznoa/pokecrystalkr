@@ -148,7 +148,6 @@ AzaleaGymStatue:
 .Beaten:
 	trainertotext BUGSY, BUGSY1, MEM_BUFFER_1
 	jumpstd gymstatue2
-
 BugsyText_INeverLose:
 	text "I'm BUGSY!"
 	line "I never lose when"
